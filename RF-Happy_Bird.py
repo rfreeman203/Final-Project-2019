@@ -41,8 +41,9 @@ x2, y2 = float(data[1][0]), float(data[1][1])
 x3, y3 = float(data[2][0]), float(data[2][1])
 x4, y4 = float(data[3][0]), float(data[3][1])
 
-#finding the third difference will give you the a-value to a cubic function.
+#Finding the third difference and dividing it by three factorial will give you the a-value to a cubic function.
 #To find third difference we must find the difference in the y-values.
+#To find three factorial we multiply 1 * 2 * 3
 def third_difference(y1, y2, y3, y4):
     f_diff1 = y2 - y1
     f_diff2 = y3 - y2
@@ -53,6 +54,7 @@ def third_difference(y1, y2, y3, y4):
     a_val = t_diff / 6
     return a_val
 
+#calls upon the function and returns a_val for cubic function
 a = third_difference(y1, y2, y3, y4)
 
 print(a)
