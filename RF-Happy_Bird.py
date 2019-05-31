@@ -23,3 +23,36 @@ Example input                  Example Output
 4 3                            d = -5.00
 """
 
+#read and open text file from github
+from urllib.request import urlopen
+url = 'https://raw.githubusercontent.com/pbeens/CS-Challenge-Data-Files/master/DSBN/2014/C20.txt'
+lines = urlopen(url).readlines()
+
+#creating a empty list to append the x and y values
+data = []
+#decoding the line so it can be read properly in python
+for line in lines:
+    line = line.decode().strip()
+    data.append(line.split())
+    
+#created variables for cartesian points
+x1, y1 = float(data[0][0]), float(data[0][1])
+x2, y2 = float(data[1][0]), float(data[1][1])
+x3, y3 = float(data[2][0]), float(data[2][1])
+x4, y4 = float(data[3][0]), float(data[3][1])
+
+#finding the third difference will give you the a-value to a cubic function.
+#To find third difference we must find the difference in the y-values.
+def third_difference(y1, y2, y3, y4):
+    f_diff1 = y2 - y1
+    f_diff2 = y3 - y2
+    f_diff3 = y4 - y3
+    s_diff1 = f_diff2 - f_diff1
+    s_diff2 = f_diff3 - f_diff2
+    t_diff = s_diff2 - s_diff1
+    a_val = t_diff / 6
+    return a_val
+
+a = third_difference(y1, y2, y3, y4)
+
+print(a)
