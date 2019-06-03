@@ -57,4 +57,28 @@ def third_difference(y1, y2, y3, y4):
 #calls upon the function and returns a_val for cubic function
 a = third_difference(y1, y2, y3, y4)
 
-print(a)
+#creates function 
+def function_creator(x, y):
+    y = y - (a*(x**3))
+    b = x**2
+    c = x
+    #`y-ax^2 = bx^2 + cx + d
+    return y, b, c
+
+function_1 = function_creator(x1, y1)
+function_2 = function_creator(x2, y2)
+function_3 = function_creator(x3, y3)
+
+def elimination_method(f_function, s_function):
+    y = s_function[0] - f_function[0]
+    b = s_function[1] - f_function[1]
+    c = s_function[2] - f_function[2]
+    return y, b, c
+
+function_4 = elimination_method(function_1, function_2)
+function_5 = elimination_method(function_2, function_3)
+function_6 = elimination_method(function_4, function_5)
+
+b = function_6[0] / function_6[1]
+
+print(b)
