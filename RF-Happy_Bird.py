@@ -41,6 +41,7 @@ x2, y2 = float(data[1][0]), float(data[1][1])
 x3, y3 = float(data[2][0]), float(data[2][1])
 x4, y4 = float(data[3][0]), float(data[3][1])
 
+#We need to solve for the equation y = ax**3 + bx**2 + cx + d
 #Finding the third difference and dividing it by three factorial will give you the a-value to a cubic function.
 #To find third difference we must find the difference in the y-values.
 #To find three factorial we multiply 1 * 2 * 3
@@ -57,14 +58,17 @@ def third_difference(y1, y2, y3, y4):
 #calls upon the function and returns a_val for cubic function
 a = third_difference(y1, y2, y3, y4)
 
-#creates function 
+#creates function. Since we now have the a-value we can subtract the value from the right side to continue solving for other variables.
+#Our current function looks like y - ax**3 = bx**2 + cx + d. However when we use the elimination method the d - value is always eliminated.
+#Therefore the d value is unnecessary at this moment and we will not call upon it.
 def function_creator(x, y):
     y = y - (a*(x**3))
     b = x**2
     c = x
-    #`y-ax^2 = bx^2 + cx + d
     return y, b, c
 
+#Creates 3 functions to use for elimination in order to solve for b and c
+#The coding function it calls upon returns the updated y value, the b value, and the c value.
 function_1 = function_creator(x1, y1)
 function_2 = function_creator(x2, y2)
 function_3 = function_creator(x3, y3)
@@ -80,6 +84,7 @@ function_5 = elimination_method(function_2, function_3)
 function_6 = elimination_method(function_4, function_5)
 
 b = function_6[0] / function_6[1]
+#Once we have our b value we can use the 4th or 5th equation we created to solve for the c value by subbing our b value back into the equation.
 c = function_4[0] - function_4[1]*b
 d = y1 - (a*(x1**3) + b*(x1**2) + c*x1)
 
