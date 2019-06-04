@@ -80,5 +80,7 @@ function_5 = elimination_method(function_2, function_3)
 function_6 = elimination_method(function_4, function_5)
 
 b = function_6[0] / function_6[1]
+c = function_4[0] - function_4[1]*b
+d = y1 - (a*(x1**3) + b*(x1**2) + c*x1)
 
-print(b)
+print(a, b, c, d)
