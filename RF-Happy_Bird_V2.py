@@ -26,8 +26,8 @@ Example input                  Example Output
 import numpy as np
 
 from urllib.request import urlopen
-#url = 'https://raw.githubusercontent.com/pbeens/CS-Challenge-Data-Files/master/DSBN/2014/C20.txt'
-url = 'https://raw.githubusercontent.com/pbeens/CS-Challenge-Data-Files/master/DSBN/2014/C21.txt'
+url = 'https://raw.githubusercontent.com/pbeens/CS-Challenge-Data-Files/master/DSBN/2014/C20.txt'
+#url = 'https://raw.githubusercontent.com/pbeens/CS-Challenge-Data-Files/master/DSBN/2014/C21.txt'
 lines = urlopen(url).readlines()
 
 data = []
@@ -42,16 +42,32 @@ x2, y2 = float(data[1][0]), float(data[1][1])
 x3, y3 = float(data[2][0]), float(data[2][1])
 x4, y4 = float(data[3][0]), float(data[3][1])
 
-def function_creator(x):
+def eqn_creator(x):
     a = x ** 3
     b = x ** 2
     c = x
-    d = 1
+    d = 1.0
     return a, b, c, d
 
-function_1 = function_creator(x1)
-function_2 = function_creator(x2)
-function_3 = function_creator(x3)
-function_4 = function_creator(x4)
+eqn_1 = eqn_creator(x1)
+eqn_2 = eqn_creator(x2)
+eqn_3 = eqn_creator(x3)
+eqn_4 = eqn_creator(x4)
 
+A = np.array([ [eqn_1[0], eqn_1[1], eqn_1[2], eqn_1[3]],
+               [eqn_2[0], eqn_2[1], eqn_2[2], eqn_2[3]],
+               [eqn_3[0], eqn_3[1], eqn_3[2], eqn_3[3]],
+               [eqn_4[0], eqn_4[1], eqn_4[2], eqn_4[3]],
+               ])
+
+B = np.array([y1, y2, y3, y4])
+
+C = np.linalg.solve(A, B)
+
+a = C[0]
+b = C[1]
+c = C[2]
+d = C[3]
+
+print('{:.2f}, {:.2f}, {:.2f}, {:.2f}'.format(a, b, c, d))
 
