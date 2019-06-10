@@ -25,7 +25,8 @@ Example input                  Example Output
 
 #read and open text file from github
 from urllib.request import urlopen
-url = 'https://raw.githubusercontent.com/pbeens/CS-Challenge-Data-Files/master/DSBN/2014/C20.txt'
+#url = 'https://raw.githubusercontent.com/pbeens/CS-Challenge-Data-Files/master/DSBN/2014/C20.txt'
+url = 'https://raw.githubusercontent.com/pbeens/CS-Challenge-Data-Files/master/DSBN/2014/C21.txt'
 lines = urlopen(url).readlines()
 
 #creating a empty list to append the x and y values
