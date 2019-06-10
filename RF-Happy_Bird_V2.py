@@ -64,10 +64,7 @@ B = np.array([y1, y2, y3, y4])
 
 C = np.linalg.solve(A, B)
 
-a = C[0]
-b = C[1]
-c = C[2]
-d = C[3]
+a, b, c, d = C[0], C[1], C[2], C[3]
 
 print('{:.2f}, {:.2f}, {:.2f}, {:.2f}'.format(a, b, c, d))
 
