@@ -42,11 +42,16 @@ x2, y2 = float(data[1][0]), float(data[1][1])
 x3, y3 = float(data[2][0]), float(data[2][1])
 x4, y4 = float(data[3][0]), float(data[3][1])
 
-def function_creator(x, y):
+def function_creator(x):
     a = x ** 3
     b = x ** 2
     c = x
     d = 1
-    return eqn
+    return a, b, c, d
 
-print(function_creator(x1, y1))
+function_1 = function_creator(x1)
+function_2 = function_creator(x2)
+function_3 = function_creator(x3)
+function_4 = function_creator(x4)
+
+
